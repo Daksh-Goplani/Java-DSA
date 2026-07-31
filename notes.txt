@@ -1,0 +1,15 @@
+Single Line Comment: // Single Line
+Multi Line Comment: /* Multi Line */
+
+Variable: Change
+Variable Declaration: int a;
+Variable Initialization: a=10; Only when assigning value for first time then afterward its value reinitialization
+Declaration & Initialization can be done together: int a = 10;
+
+Naming Convention:
+Variable name only start with _ , $ , alphabets
+Can end with alphabets , _ , $ or even with numbers
+No space and keywords are allowed
+
+int + int = int
+int + string = concatination
