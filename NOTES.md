@@ -235,3 +235,85 @@ Unicode is a universal character encoding standard that includes:
 - Symbols and emojis
 
 **Java uses Unicode** for character representation, allowing programs to work with text from virtually any language.
+
+## Number System
+
+| Number System | Base | Digits |
+|---------------|------|--------|
+| Binary | 2 | 0, 1 |
+| Octal | 8 | 0–7 |
+| Decimal | 10 | 0–9 |
+| Hexadecimal | 16 | 0–9, A–F |
+
+---
+
+## Decimal Conversion
+
+### Decimal → Binary
+Example: `25₁₀ = 11001₂`
+
+```java
+int n = 25;
+System.out.println(Integer.toBinaryString(n));
+```
+
+### Decimal → Octal
+Example: `25₁₀ = 31₈`
+
+```java
+System.out.println(Integer.toOctalString(n));
+```
+
+### Decimal → Hexadecimal
+Example: `255₁₀ = FF₁₆`
+
+```java
+int n = 255;
+System.out.println(Integer.toHexString(n).toUpperCase());
+```
+
+---
+
+## Java Number Representation
+
+```java
+int decimal = 25;
+int binary = 0b11001;
+int octal = 031;
+int hex = 0x19;
+```
+
+---
+
+## Implicit Type Conversion (Widening)
+
+- Automatic conversion from **smaller → larger** data type.
+- No data loss.
+
+```java
+int a = 100;
+double b = a;
+```
+
+---
+
+## Explicit Type Conversion (Casting)
+
+- Manual conversion from **larger → smaller** data type.
+- May cause data loss.
+
+```java
+double x = 25.99;
+int y = (int) x;
+```
+
+---
+
+## Difference
+
+| Implicit | Explicit |
+|----------|----------|
+| Automatic | Manual |
+| Safe | May lose data |
+| `int → double` | `double → int` |
+| No casting | Casting required |
