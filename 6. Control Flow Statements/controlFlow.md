@@ -205,14 +205,213 @@ Default (else)
 
 ---
 
+---
+
+# 5. switch Statement
+
+### Definition
+
+The `switch` statement is used to execute one block of code from multiple possible options based on the value of an expression.
+
+It is often cleaner and more readable than writing many `if-else-if` statements when checking the same variable against multiple values.
+
+### Syntax
+
+```java
+switch (expression) {
+    case value1:
+        // code
+        break;
+
+    case value2:
+        // code
+        break;
+
+    default:
+        // code
+}
+```
+
+### Example
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int day = 3;
+
+        switch (day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+
+            case 2:
+                System.out.println("Tuesday");
+                break;
+
+            case 3:
+                System.out.println("Wednesday");
+                break;
+
+            default:
+                System.out.println("Invalid Day");
+        }
+    }
+}
+```
+
+### Output
+
+```
+Wednesday
+```
+
+---
+
+# Fall Through
+
+### Definition
+
+If a `break` statement is **not** used, Java continues executing the next case(s) even if their values do not match. This behavior is called **fall through**.
+
+### Example
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int number = 2;
+
+        switch (number) {
+            case 1:
+                System.out.println("One");
+
+            case 2:
+                System.out.println("Two");
+
+            case 3:
+                System.out.println("Three");
+
+            default:
+                System.out.println("Done");
+        }
+    }
+}
+```
+
+### Output
+
+```
+Two
+Three
+Done
+```
+
+**Explanation:** Since there is no `break` after `case 2`, execution falls through to the remaining cases.
+
+---
+
+# switch Flow
+
+```
+           Expression
+                |
+         +------+------+
+         |             |
+      case 1       case 2 ...
+         |             |
+      Execute      Execute
+         |             |
+      break? --------- No
+         |             |
+       Exit       Next Case
+                ...
+                  |
+              default
+```
+
+---
+
+# switch vs if-else
+
+| Feature | switch | if-else |
+|---------|--------|---------|
+| Best for | Checking one variable against multiple values | Complex conditions and ranges |
+| Readability | Cleaner for many fixed values | Better for logical expressions |
+| Performance | Generally more optimized for fixed constant values | May require multiple condition checks |
+| Supports | Exact value matching | Any boolean expression |
+
+---
+
+# switch Important Points
+
+- `switch` is generally **more optimized** than a long `if-else-if` ladder when comparing a single variable against many constant values.
+- `break` is used to stop execution after a matching case.
+- Without `break`, execution **falls through** to the next case(s).
+- The `default` block is optional and runs if no case matches.
+- Each `case` must have a **constant value**.
+
+### Allowed Types
+
+The `switch` expression can use:
+
+- `byte`
+- `short`
+- `int`
+- `char`
+- `String`
+- `enum`
+
+> Earlier Java versions mainly supported integral types (`byte`, `short`, `int`, `char`) and later versions added support for `String`.
+
+---
+
+
 # Comparison
 
 | Statement | Number of Conditions | Executes |
-|------------|----------------------|----------|
+|-----------|----------------------|----------|
 | if | One | Only if condition is true |
 | if-else | One | One of two blocks |
 | if-else-if | Multiple | First matching condition |
 | Nested if | Multiple (inside another if) | Inner block only if outer condition is true |
+| switch | Multiple fixed values | Matching case block |
+
+---
+
+# 6. Modern switch (Arrow Syntax)
+
+### Definition
+
+The **modern switch** (Java 14+) uses the `->` arrow operator. It is cleaner, does not require `break`, and prevents fall through.
+
+### Example
+
+```java
+import java.util.Scanner;
+
+public class SwitchUpdated {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a character: ");
+        char ch = sc.next().charAt(0);
+
+        switch (ch) {
+            case 'a', 'e', 'i', 'o', 'u' -> System.out.println("Vowel");
+            default -> System.out.println("Consonant");
+        }
+
+        sc.close();
+    }
+}
+```
+
+### Important Points
+
+- Uses the `->` arrow operator.
+- No `break` statement is required.
+- Prevents fall through.
+- Multiple case labels can be combined using commas.
+- Available as a standard feature since **Java 14**.
 
 ---
 
@@ -232,5 +431,6 @@ Default (else)
 - `if-else` → Chooses between two blocks.
 - `if-else-if` → Chooses among multiple conditions.
 - `Nested if` → An `if` inside another `if` for dependent decisions.
+- `switch` → Chooses one block from multiple fixed values and supports **fall through** when `break` is omitted.
 
 Mastering these conditional statements is the foundation for writing decision-making programs in Java.
