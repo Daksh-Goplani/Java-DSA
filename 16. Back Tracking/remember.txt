@@ -1,0 +1,9 @@
+All cells that are visited, mark that as false so that it does not go there
+
+marking false == I have that cell in my current path so, when that path is over , ex: you are in another recursion call those cells should not be false otherwise it will not give ans of other as already cell is false.
+
+Solution: While moving back -> Restore maze as it was -> ex: when go back from second to first make second true
+
+When coming out of recursion call remark the cells as true
+
+Backtracking: You are making some changes while going in below recursion call, so when you go outside these recursion calls, the changes that were made via those recursion call should also not be available
